@@ -5,6 +5,12 @@
 ## Introduction
 Welcome to our project repository for the UBS Challenge. This project focuses on leveraging Instagram data to identify and capitalize on investment opportunities. This documentation provides a comprehensive overview of our analytical process, detailing our methodologies, the challenges we encountered, and the strategies we adopted to overcome these issues.
 
+We construct the following pipeline for the task:
+
+<p align="center">
+    <img src="images/datathon.png" alt="isolated" width="150"/>
+</p>
+
 ### Repository Structure
 This repository is structured into several directories corresponding to the major phases of our project:
 - `preprocessing`: Scripts for data cleaning and integration.
