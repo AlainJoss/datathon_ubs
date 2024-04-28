@@ -135,3 +135,6 @@ This project offers a few key outcomes, which are directly applied to the given 
 
 ## Acknowledgments
 Thanks to all contributors, data providers, and supporters who made this project possible.
+
+## Contribuitors:
+Alain Joss, Jakob Johannes Bauer, Santiago Ormando Aramburu
