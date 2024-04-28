@@ -118,20 +118,6 @@ The following enhancements would make our approach more effective:
 - a clear understanding of the insights that the dataset is aiming to provide
 
 
-
-## Challenges and Solutions
-- The first challenge encountered was to develop questions which we could answer given the data.
-- The second challenge, directly related, was to clean the data, provided the huge amount of missing values, and its complex structure.
-- The third challenge was to develop an algorithm which could actually perform better than random guessing, given the little signal in the data.
-
-Overall, the biggest issue in providing value through our approach, is directly related to the quality of the data.
-The following enhancements would make our approach more effective:
-- more data
-- more informative features, like the comments themselves (for sentiment analysis), etc.
-- no missing values 
-- a clear understanding of the insights that the dataset is aiming to provide
-
-
 ## Conclusion
 This project offers a few key outcomes, which are directly applied to the given data, but can be customized to different datasets with very little effort.
 - Company stability estimates in order to evaluate long term investment goals
