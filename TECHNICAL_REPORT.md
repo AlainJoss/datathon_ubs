@@ -1,20 +1,20 @@
 
 
-# UBS Challenge Project Documentation
+# UBS Challenge: Technical Report
 
 ## Introduction
 Welcome to our project repository for the UBS Challenge. This project focuses on leveraging Instagram data to identify and capitalize on investment opportunities. This documentation provides a comprehensive overview of our analytical process, detailing our methodologies, the challenges we encountered, and the strategies we adopted to overcome these issues.
 
 ### Repository Structure
 This repository is structured into several directories corresponding to the major phases of our project:
-- `data`: Contains raw and processed datasets.
 - `preprocessing`: Scripts for data cleaning and integration.
 - `EDA`: Exploratory data analysis notebooks.
 - `anomaly_detection`: Notebooks focused on identifying anomalies.
 - `stability_index`: A notebook focused on identifying companies with little day-to-day fluctuation.
+- `resources`: Competition documents.
 
 ## Preprocessing
-The preprocessing phase is critical as it prepares the raw data for analysis. This stage includes cleaning the data, integrating financial data from Yahoo, and creating additional features needed for anomaly detection. The additional features, were chosen in a way that they were comparable between different company sizes (Even though, we also scaled the data). The idea of this variables is to add information about previous observations, to capture the "time component"."
+The preprocessing phase is critical as it prepares the raw data for analysis. This stage includes cleaning the data, integrating financial data from Yahoo, and creating additional features needed for anomaly detection. The additional features, were chosen in a way that they were comparable between different company sizes (Even though, we also scaled the data). The idea of this variables is to add information about previous observations, to capture the "time component".
 
 - Content Variable = pictures + videos: We assume that the effect of a video or of a picture will be the similar.
 - Likes per Content = Likes/Content: To get an estimator of the amount of likes per content.
@@ -39,27 +39,21 @@ After preprocessing, we conduct a thorough exploratory analysis to understand th
 ## Anomaly Detection
 The anomaly detection component utilizes statistical and machine learning methods to identify unusual patterns that could signify investment opportunities.
 
-### Notebooks
-- Each notebook in this directory applies a different anomaly detection technique, allowing us to compare their effectiveness and suitability for various types of data scenarios.
-
-## Stability Index
-
 ### Notebook
-- The notebook included in the directory using the discrepancy between short-term movements and long-term movements, in order to estimate the stability of each company within a single numerical value.
-- It also includes visualization of three representative companies, which show that the estimated stability correlates to the actual market and sentiment stability.
+- `model.ipynb`: Provides the anomaly detection models and the "Sell Strategy".
+
 
 ## Modelling Approach Summary
 1. **Model Selection**
    - For the anomaly analysis, two models were chosen:
      - Autoencoder Neural Network: It was selected for its proficiency in learning normal data patterns and identifying outliers based on reconstruction errors.
-     -Isolation Forest (Iso Trees): Complementing the Autoencoder, the Isolation Forest was used for its effectiveness in anomaly isolation. 
+     - Isolation Forest (Iso Trees): Complementing the Autoencoder, the Isolation Forest was used for its effectiveness in anomaly isolation. 
      - Justification: Both models align with the project's objective of detecting anomalies without prior knowledge of their characteristics. The Autoencoder is justified for its feature learning capabilities, while the Isolation Forest offers a quick and effective method to pinpoint potential anomalies, even in the presence of noise. After analyzing both outputs, the Isolation Trees output was found more robust due to the training computation (for more details see notebook "models"). 
    - For the stability index, a statistical model was used that calculated the weighted sum of the standard deviation of:
      - The engagement consistency score (rolling likes per content and rolling comments per like)
      - The growth consistency score (normalized rolling relative change of weekly followers)
      - The price volatility score (normalized rolling relative change of market closing prices)
      - The moving average convergence score (normalized rolling comments per likes and follower change)
-
 
 2. **Techniques for model interpretation** (See notebook: models.ipnyb)
 
@@ -93,6 +87,13 @@ Spikes in negative engagement metrics (likes, comments): These may imply public 
 The method reached an accuracy of 60%.
 By leveraging these insights, the "Sell" strategy is formulated to capitalize on early detection of negative trends, thus enabling timely decision-making that could protect investments from potential downturns. It's a proactive approach to mitigate risk based on the predictive signals from our anomaly detection models. 
 
+
+## Stability Index
+
+### Notebook
+
+- `stability_index.ipynb`: The notebook included in the directory using the discrepancy between short-term movements and long-term movements, in order to estimate the stability of each company within a single numerical value.
+- It also includes visualization of three representative companies, which show that the estimated stability correlates to the actual market and sentiment stability.
 **Long Term Investment Recommendations**
 
 As stock markets historically tend to go up, the sell signal already provides a great investment opportunity.
@@ -134,3 +135,6 @@ This project offers a few key outcomes, which are directly applied to the given 
 
 ## Acknowledgments
 Thanks to all contributors, data providers, and supporters who made this project possible.
+
+## Contribuitors:
+Alain Joss, Jakob Johannes Bauer, Santiago Ormando Aramburu
