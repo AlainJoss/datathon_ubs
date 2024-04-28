@@ -74,7 +74,7 @@ Thus, the stability index estimation model aims to provide the most stable compa
      - The price volatility score (normalized rolling relative change of market closing prices).
      - The moving average convergence score (normalized rolling comments per likes and follower change).
 
-### Techniques for model interpretation** (See notebook: models.ipnyb)
+### Techniques for model interpretation (See notebook: models.ipnyb)
 
 **"find_outliers"** function: Aims to identify features in the dataset that have values deviating significantly from the expected range, based on statistical norms. Such features are flagged as potential variables that made the model identify the observation as an anomaly. 
 
