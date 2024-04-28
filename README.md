@@ -37,56 +37,10 @@ After preprocessing, we conduct a thorough exploratory analysis to understand th
 - `time_series_examples.ipynb`: Examines time-series data to showcase what the data that will be used in the anomaly detection look like.
 
 ## Anomaly Detection
-The anomaly detection component utilizes statistical and machine learning methods to identify unusual patterns that could signify investment opportunities.
+The anomaly detection component utilizes statistical and machine learning methods to identify unusual patterns that could signify investment opportunities. Further explanation will be provided in the Modelling Approach Summary.
 
 ### Notebook
 - `model.ipynb`: Provides the anomaly detection models and the "Sell Strategy".
-
-
-## Modelling Approach Summary
-1. **Model Selection**
-   - For the anomaly analysis, two models were chosen:
-     - Autoencoder Neural Network: It was selected for its proficiency in learning normal data patterns and identifying outliers based on reconstruction errors.
-     - Isolation Forest (Iso Trees): Complementing the Autoencoder, the Isolation Forest was used for its effectiveness in anomaly isolation. 
-     - Justification: Both models align with the project's objective of detecting anomalies without prior knowledge of their characteristics. The Autoencoder is justified for its feature learning capabilities, while the Isolation Forest offers a quick and effective method to pinpoint potential anomalies, even in the presence of noise. After analyzing both outputs, the Isolation Trees output was found more robust due to the training computation (for more details see notebook "models"). 
-   - For the stability index, a statistical model was used that calculated the weighted sum of the standard deviation of:
-     - The engagement consistency score (rolling likes per content and rolling comments per like)
-     - The growth consistency score (normalized rolling relative change of weekly followers)
-     - The price volatility score (normalized rolling relative change of market closing prices)
-     - The moving average convergence score (normalized rolling comments per likes and follower change)
-
-2. **Techniques for model interpretation** (See notebook: models.ipnyb)
-
-2.1 "find_outliers" function: Aims to identify features in the dataset that have values deviating significantly from the expected range, based on statistical norms. Such features are flagged as potential variables that made the model identify the observation as an anomaly. 
-
-Assumptions: 
-
-- Normal Distribution: The function assumes that the data for each feature follows a normal distribution.
-
-- Independence of Features: The function treats each feature independently when determining outliers. It does not account for potential correlations between features that might explain the observed values.
-
-2.2 "Relevant Features" code: The goal, as well as in "find outliers" is to identify the features that contributed the most to the model in order to clasify an observation as anomaly, specifically for the autoencoder output. By focusing which features have significantly high reconstruction errors, this analysis enhances the interpretability of the anomalies detected. 
-
-Findings:
-
-Both analysis gave us different results:
-The "find_outliers" show us that the first method mainly relied on  in order 
-
-"Relevant Features" showed that, likes_per_content_weekly_change and comments_per_likes_weekly_change were the most relevant ones, while in "find_outliers" identified comments_per_likes and its moving averages as the most relevant ones. 
-
-Due to the problems of convergence of the neural network and from our interpretations of the results (which suggest a stronger alignment with our expected outcomes), we decided to continue working with the results of the Isolation Tree. 
-
-3  **Strategic Application**
-
-**Sell Recommendation**
-
-The analysis of the identified anomalous observations allowed us to derive actionable insights. Specifically, by examining the underlying features that contributed to the anomalies, we were able to come up with a strategic "Sell" recommendation. This strategy is grounded in the rationale that:
-
-Significant decreases in follower count: Suggest a loss of consumer or investor confidence, which can be an early indicator of potential issues within the company that may affect stock prices.
-Spikes in negative engagement metrics (likes, comments): These may imply public relations challenges or other negative events that could lead to decreased investor sentiment and subsequent stock price declines.
-The method reached an accuracy of 60%.
-By leveraging these insights, the "Sell" strategy is formulated to capitalize on early detection of negative trends, thus enabling timely decision-making that could protect investments from potential downturns. It's a proactive approach to mitigate risk based on the predictive signals from our anomaly detection models. 
-
 
 ## Stability Index
 
@@ -101,7 +55,51 @@ In order to leverage this, we are looking for stable companies with big market c
 
 Thus, the stability index estimation model aims to provide the most stable companies. According to statistical analysis on the given data, this indeed does hold.
 
-4. **Recommendations for Model Enhancement**
+
+## Modelling Approach Summary
+ ### Model Selection
+   - For the anomaly analysis, two models were chosen:
+      - Autoencoder Neural Network: It was selected for its proficiency in learning normal data patterns and identifying outliers based on reconstruction errors.
+     - Isolation Forest (Iso Trees): Complementing the Autoencoder, the Isolation Forest was used for its effectiveness in anomaly isolation. 
+     - Justification: Both models align with the project's objective of detecting anomalies without prior knowledge of their characteristics. The Autoencoder is justified for its feature learning capabilities, while the Isolation Forest offers a quick and effective method to pinpoint potential anomalies, even in the presence of noise. After analyzing both outputs, the Isolation Trees output was found more robust due to the training computation (for more details see notebook "models"). 
+   - For the stability index, a statistical model was used that calculated the weighted sum of the standard deviation of:
+     - The engagement consistency score (rolling likes per content and rolling comments per like).
+     - The growth consistency score (normalized rolling relative change of weekly followers).
+     - The price volatility score (normalized rolling relative change of market closing prices).
+     - The moving average convergence score (normalized rolling comments per likes and follower change).
+
+### Techniques for model interpretation** (See notebook: models.ipnyb)
+
+**"find_outliers"** function: Aims to identify features in the dataset that have values deviating significantly from the expected range, based on statistical norms. Such features are flagged as potential variables that made the model identify the observation as an anomaly. 
+
+Assumptions: 
+
+- Normal Distribution: The function assumes that the data for each feature follows a normal distribution.
+
+- Independence of Features: The function treats each feature independently when determining outliers. It does not account for potential correlations between features that might explain the observed values.
+
+**"Relevant Features"** code: The goal, as well as in "find outliers" is to identify the features that contributed the most to the model in order to clasify an observation as anomaly, specifically for the autoencoder output. By focusing which features have significantly high reconstruction errors, this analysis enhances the interpretability of the anomalies detected. 
+
+Findings:
+
+Both analysis gave us different results:
+
+"Relevant Features" showed that, likes_per_content_weekly_change and comments_per_likes_weekly_change were the most relevant ones, while in "find_outliers" identified comments_per_likes and its moving averages as the most relevant ones. 
+
+Due to the problems of convergence of the neural network and from our interpretations of the results (which suggest a stronger alignment with our expected outcomes), we decided to continue working with the results of the Isolation Tree. 
+
+### Strategic Application
+
+**Sell Recommendation**
+
+The analysis of the identified anomalous observations allowed us to derive actionable insights. Specifically, by examining the underlying features that contributed to the anomalies, we were able to come up with a strategic "Sell" recommendation. This strategy is grounded in the rationale that:
+
+Significant decreases in follower count: Suggest a loss of consumer or investor confidence, which can be an early indicator of potential issues within the company that may affect stock prices.
+Spikes in negative engagement metrics (likes, comments): These may imply public relations challenges or other negative events that could lead to decreased investor sentiment and subsequent stock price declines.
+The method reached an accuracy of 60%.
+By leveraging these insights, the "Sell" strategy is formulated to capitalize on early detection of negative trends, thus enabling timely decision-making that could protect investments from potential downturns. It's a proactive approach to mitigate risk based on the predictive signals from our anomaly detection models. 
+
+### Recommendations for Model Enhancement
 
   - Temporal Analysis: For time-series data, leverage models like LSTM to account for temporal correlations and potentially improve detection accuracy.
   - Use of Advanced Anomaly Detection Techniques: Beyond traditional autoencoders and isolation trees, we can explore more advanced anomaly detection techniques. For example, Variational Autoencoders (VAEs) or Generative Adversarial Networks (GANs) for anomaly detection can provide more sophisticated mechanisms to learn the data distribution and could potentially offer better performance.
@@ -114,24 +112,24 @@ Thus, the stability index estimation model aims to provide the most stable compa
 
 Overall, the biggest issue in providing value through our approach, is directly related to the quality of the data.
 The following enhancements would make our approach more effective:
-- more data
-- more informative features, like the comments themselves (for sentiment analysis), etc.
-- no missing values 
-- a clear understanding of the insights that the dataset is aiming to provide
+- More data.
+- More informative features, like the comments themselves (for sentiment analysis), etc.
+- No missing values.
+- A clear understanding of the insights that the dataset is aiming to provide.
 
 
 ## Conclusion
 This project offers a few key outcomes, which are directly applied to the given data, but can be customized to different datasets with very little effort.
-- Company stability estimates in order to evaluate long term investment goals
-- Short term negative public sentiment in order to generate Sell-Signals and skip market dips
-- Key insights into the effects of different dataset features on public market cap evaluation
+- Company stability estimates in order to evaluate long term investment goals.
+- Short term negative public sentiment in order to generate Sell-Signals and skip market dips.
+- Key insights into the effects of different dataset features on public market cap evaluation.
 
 ## How to Use This Repository
-- Download packages listed in requirements.txt
-- Start with the preprocessing folder, running subsequently the three notebooks
-- Take a look at the EDA folder for gaining a deeper understanding about the nuances of the data
-- Take a deep dive into the Anomaly Detection folder to explore the use models and their performance
-- Use the stability index to evaluate long term investment goals. Edit hyperparameters according to your estimate
+- Download packages listed in requirements.txt.
+- Start with the preprocessing folder, running subsequently the three notebooks.
+- Take a look at the EDA folder for gaining a deeper understanding about the nuances of the data.
+- Take a deep dive into the Anomaly Detection folder to explore the use models and their performance.
+- Use the stability index to evaluate long term investment goals. Edit hyperparameters according to your estimate.
 
 ## Acknowledgments
 Thanks to all contributors, data providers, and supporters who made this project possible.
