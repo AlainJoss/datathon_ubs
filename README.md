@@ -84,15 +84,16 @@ Due to the problems of convergence of the neural network and from our interpreta
 
 3  **Strategic Application**
 
-### Sell Recommendation
+**Sell Recommendation**
 
 The analysis of the identified anomalous observations allowed us to derive actionable insights. Specifically, by examining the underlying features that contributed to the anomalies, we were able to come up with a strategic "Sell" recommendation. This strategy is grounded in the rationale that:
 
 Significant decreases in follower count: Suggest a loss of consumer or investor confidence, which can be an early indicator of potential issues within the company that may affect stock prices.
 Spikes in negative engagement metrics (likes, comments): These may imply public relations challenges or other negative events that could lead to decreased investor sentiment and subsequent stock price declines.
-By leveraging these insights, the "Sell" strategy is formulated to capitalize on early detection of negative trends, thus enabling timely decision-making that could protect investments from potential downturns. It's a proactive approach to mitigate risk based on the predictive signals from our anomaly detection models.
+The method reached an accuracy of 60%.
+By leveraging these insights, the "Sell" strategy is formulated to capitalize on early detection of negative trends, thus enabling timely decision-making that could protect investments from potential downturns. It's a proactive approach to mitigate risk based on the predictive signals from our anomaly detection models. 
 
-### Long Term Investment Recommendations
+**Long Term Investment Recommendations**
 
 As stock markets historically tend to go up, the sell signal already provides a great investment opportunity.
 In order to leverage this, we are looking for stable companies with big market caps, that achieve long term growth with as little risk as possible.
