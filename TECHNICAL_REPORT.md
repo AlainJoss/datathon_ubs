@@ -57,7 +57,7 @@ Thus, the stability index estimation model aims to provide the most stable compa
 
 
 ## Modelling Approach Summary
-1. **Model Selection**
+ ### Model Selection
    - For the anomaly analysis, two models were chosen:
       - Autoencoder Neural Network: It was selected for its proficiency in learning normal data patterns and identifying outliers based on reconstruction errors.
      - Isolation Forest (Iso Trees): Complementing the Autoencoder, the Isolation Forest was used for its effectiveness in anomaly isolation. 
@@ -68,9 +68,9 @@ Thus, the stability index estimation model aims to provide the most stable compa
      - The price volatility score (normalized rolling relative change of market closing prices)
      - The moving average convergence score (normalized rolling comments per likes and follower change)
 
-2. **Techniques for model interpretation** (See notebook: models.ipnyb)
+### Techniques for model interpretation** (See notebook: models.ipnyb)
 
-2.1 "find_outliers" function: Aims to identify features in the dataset that have values deviating significantly from the expected range, based on statistical norms. Such features are flagged as potential variables that made the model identify the observation as an anomaly. 
+**"find_outliers"** function: Aims to identify features in the dataset that have values deviating significantly from the expected range, based on statistical norms. Such features are flagged as potential variables that made the model identify the observation as an anomaly. 
 
 Assumptions: 
 
@@ -78,7 +78,7 @@ Assumptions:
 
 - Independence of Features: The function treats each feature independently when determining outliers. It does not account for potential correlations between features that might explain the observed values.
 
-2.2 "Relevant Features" code: The goal, as well as in "find outliers" is to identify the features that contributed the most to the model in order to clasify an observation as anomaly, specifically for the autoencoder output. By focusing which features have significantly high reconstruction errors, this analysis enhances the interpretability of the anomalies detected. 
+**"Relevant Features"** code: The goal, as well as in "find outliers" is to identify the features that contributed the most to the model in order to clasify an observation as anomaly, specifically for the autoencoder output. By focusing which features have significantly high reconstruction errors, this analysis enhances the interpretability of the anomalies detected. 
 
 Findings:
 
@@ -89,7 +89,7 @@ The "find_outliers" show us that the first method mainly relied on  in order
 
 Due to the problems of convergence of the neural network and from our interpretations of the results (which suggest a stronger alignment with our expected outcomes), we decided to continue working with the results of the Isolation Tree. 
 
-3  **Strategic Application**
+### Strategic Application
 
 **Sell Recommendation**
 
@@ -100,7 +100,7 @@ Spikes in negative engagement metrics (likes, comments): These may imply public 
 The method reached an accuracy of 60%.
 By leveraging these insights, the "Sell" strategy is formulated to capitalize on early detection of negative trends, thus enabling timely decision-making that could protect investments from potential downturns. It's a proactive approach to mitigate risk based on the predictive signals from our anomaly detection models. 
 
-4. **Recommendations for Model Enhancement**
+### Recommendations for Model Enhancement
 
   - Temporal Analysis: For time-series data, leverage models like LSTM to account for temporal correlations and potentially improve detection accuracy.
   - Use of Advanced Anomaly Detection Techniques: Beyond traditional autoencoders and isolation trees, we can explore more advanced anomaly detection techniques. For example, Variational Autoencoders (VAEs) or Generative Adversarial Networks (GANs) for anomaly detection can provide more sophisticated mechanisms to learn the data distribution and could potentially offer better performance.
@@ -113,10 +113,10 @@ By leveraging these insights, the "Sell" strategy is formulated to capitalize on
 
 Overall, the biggest issue in providing value through our approach, is directly related to the quality of the data.
 The following enhancements would make our approach more effective:
-- more data
-- more informative features, like the comments themselves (for sentiment analysis), etc.
-- no missing values 
-- a clear understanding of the insights that the dataset is aiming to provide
+- More data
+- More informative features, like the comments themselves (for sentiment analysis), etc.
+- No missing values 
+- A clear understanding of the insights that the dataset is aiming to provide
 
 
 ## Conclusion
