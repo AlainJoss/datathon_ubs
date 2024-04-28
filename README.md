@@ -63,10 +63,10 @@ Thus, the stability index estimation model aims to provide the most stable compa
      - Isolation Forest (Iso Trees): Complementing the Autoencoder, the Isolation Forest was used for its effectiveness in anomaly isolation. 
      - Justification: Both models align with the project's objective of detecting anomalies without prior knowledge of their characteristics. The Autoencoder is justified for its feature learning capabilities, while the Isolation Forest offers a quick and effective method to pinpoint potential anomalies, even in the presence of noise. After analyzing both outputs, the Isolation Trees output was found more robust due to the training computation (for more details see notebook "models"). 
    - For the stability index, a statistical model was used that calculated the weighted sum of the standard deviation of:
-     - The engagement consistency score (rolling likes per content and rolling comments per like)
-     - The growth consistency score (normalized rolling relative change of weekly followers)
-     - The price volatility score (normalized rolling relative change of market closing prices)
-     - The moving average convergence score (normalized rolling comments per likes and follower change)
+     - The engagement consistency score (rolling likes per content and rolling comments per like).
+     - The growth consistency score (normalized rolling relative change of weekly followers).
+     - The price volatility score (normalized rolling relative change of market closing prices).
+     - The moving average convergence score (normalized rolling comments per likes and follower change).
 
 ### Techniques for model interpretation** (See notebook: models.ipnyb)
 
@@ -83,7 +83,6 @@ Assumptions:
 Findings:
 
 Both analysis gave us different results:
-The "find_outliers" show us that the first method mainly relied on  in order 
 
 "Relevant Features" showed that, likes_per_content_weekly_change and comments_per_likes_weekly_change were the most relevant ones, while in "find_outliers" identified comments_per_likes and its moving averages as the most relevant ones. 
 
@@ -113,24 +112,24 @@ By leveraging these insights, the "Sell" strategy is formulated to capitalize on
 
 Overall, the biggest issue in providing value through our approach, is directly related to the quality of the data.
 The following enhancements would make our approach more effective:
-- More data
+- More data.
 - More informative features, like the comments themselves (for sentiment analysis), etc.
-- No missing values 
-- A clear understanding of the insights that the dataset is aiming to provide
+- No missing values.
+- A clear understanding of the insights that the dataset is aiming to provide.
 
 
 ## Conclusion
 This project offers a few key outcomes, which are directly applied to the given data, but can be customized to different datasets with very little effort.
-- Company stability estimates in order to evaluate long term investment goals
-- Short term negative public sentiment in order to generate Sell-Signals and skip market dips
-- Key insights into the effects of different dataset features on public market cap evaluation
+- Company stability estimates in order to evaluate long term investment goals.
+- Short term negative public sentiment in order to generate Sell-Signals and skip market dips.
+- Key insights into the effects of different dataset features on public market cap evaluation.
 
 ## How to Use This Repository
-- Download packages listed in requirements.txt
-- Start with the preprocessing folder, running subsequently the three notebooks
-- Take a look at the EDA folder for gaining a deeper understanding about the nuances of the data
-- Take a deep dive into the Anomaly Detection folder to explore the use models and their performance
-- Use the stability index to evaluate long term investment goals. Edit hyperparameters according to your estimate
+- Download packages listed in requirements.txt.
+- Start with the preprocessing folder, running subsequently the three notebooks.
+- Take a look at the EDA folder for gaining a deeper understanding about the nuances of the data.
+- Take a deep dive into the Anomaly Detection folder to explore the use models and their performance.
+- Use the stability index to evaluate long term investment goals. Edit hyperparameters according to your estimate.
 
 ## Acknowledgments
 Thanks to all contributors, data providers, and supporters who made this project possible.
