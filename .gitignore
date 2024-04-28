@@ -4,3 +4,5 @@ clean_data
 raw_data
 /scraped_data
 scraped_data
+*.csv
+.idea/
