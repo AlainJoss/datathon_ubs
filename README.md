@@ -50,10 +50,15 @@ The anomaly detection component utilizes statistical and machine learning method
 
 ## Modelling Approach Summary
 1. **Model Selection**
-   - Two models were chosen:
-   - Autoencoder Neural Network: It was selected for its proficiency in learning normal data patterns and identifying outliers based on reconstruction errors.
-   -Isolation Forest (Iso Trees): Complementing the Autoencoder, the Isolation Forest was used for its effectiveness in anomaly isolation. 
-   - Justification: Both models align with the project's objective of detecting anomalies without prior knowledge of their characteristics. The Autoencoder is justified for its feature learning capabilities, while the Isolation Forest offers a quick and effective method to pinpoint potential anomalies, even in the presence of noise. After analyzing both outputs, the Isolation Trees output was found more robust due to the training computation (for more details see notebook "models"). 
+   - For the anomaly analysis, two models were chosen:
+     - Autoencoder Neural Network: It was selected for its proficiency in learning normal data patterns and identifying outliers based on reconstruction errors.
+     -Isolation Forest (Iso Trees): Complementing the Autoencoder, the Isolation Forest was used for its effectiveness in anomaly isolation. 
+     - Justification: Both models align with the project's objective of detecting anomalies without prior knowledge of their characteristics. The Autoencoder is justified for its feature learning capabilities, while the Isolation Forest offers a quick and effective method to pinpoint potential anomalies, even in the presence of noise. After analyzing both outputs, the Isolation Trees output was found more robust due to the training computation (for more details see notebook "models"). 
+   - For the stability index, a statistical model was used that calculated the weighted sum of the standard deviation of:
+     - The engagement consistency score (rolling likes per content and rolling comments per like)
+     - The growth consistency score (normalized rolling relative change of weekly followers)
+     - The price volatility score (normalized rolling relative change of market closing prices)
+     - The moving average convergence score (normalized rolling comments per likes and follower change)
 
 
 2. **Techniques for model interpretation** (See notebook: models.ipnyb)
@@ -77,14 +82,22 @@ The "find_outliers" show us that the first method mainly relied on  in order
 
 Due to the problems of convergence of the neural network and from our interpretations of the results (which suggest a stronger alignment with our expected outcomes), we decided to continue working with the results of the Isolation Tree. 
 
-3  **Strategic Application 1: Sell Recommendation**
+3  **Strategic Application**
+
+### Sell Recommendation
 
 The analysis of the identified anomalous observations allowed us to derive actionable insights. Specifically, by examining the underlying features that contributed to the anomalies, we were able to come up with a strategic "Sell" recommendation. This strategy is grounded in the rationale that:
 
 Significant decreases in follower count: Suggest a loss of consumer or investor confidence, which can be an early indicator of potential issues within the company that may affect stock prices.
-Spikes in negative engagement metrics (likes, csomments): These may imply public relations challenges or other negative events that could lead to decreased investor sentiment and subsequent stock price declines.
+Spikes in negative engagement metrics (likes, comments): These may imply public relations challenges or other negative events that could lead to decreased investor sentiment and subsequent stock price declines.
 By leveraging these insights, the "Sell" strategy is formulated to capitalize on early detection of negative trends, thus enabling timely decision-making that could protect investments from potential downturns. It's a proactive approach to mitigate risk based on the predictive signals from our anomaly detection models.
 
+### Long Term Investment Recommendations
+
+As stock markets historically tend to go up, the sell signal already provides a great investment opportunity.
+In order to leverage this, we are looking for stable companies with big market caps, that achieve long term growth with as little risk as possible.
+
+Thus, the stability index estimation model aims to provide the most stable companies. According to statistical analysis on the given data, this indeed does hold.
 
 4. **Recommendations for Model Enhancement**
 
