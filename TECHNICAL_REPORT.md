@@ -37,16 +37,29 @@ After preprocessing, we conduct a thorough exploratory analysis to understand th
 - `time_series_examples.ipynb`: Examines time-series data to showcase what the data that will be used in the anomaly detection look like.
 
 ## Anomaly Detection
-The anomaly detection component utilizes statistical and machine learning methods to identify unusual patterns that could signify investment opportunities.
+The anomaly detection component utilizes statistical and machine learning methods to identify unusual patterns that could signify investment opportunities. Further explanation will be provided in the Modelling Approach Summary.
 
 ### Notebook
 - `model.ipynb`: Provides the anomaly detection models and the "Sell Strategy".
+
+## Stability Index
+
+### Notebook
+
+- `stability_index.ipynb`: The notebook included in the directory using the discrepancy between short-term movements and long-term movements, in order to estimate the stability of each company within a single numerical value.
+- It also includes visualization of three representative companies, which show that the estimated stability correlates to the actual market and sentiment stability.
+**Long Term Investment Recommendations**
+
+As stock markets historically tend to go up, the sell signal already provides a great investment opportunity.
+In order to leverage this, we are looking for stable companies with big market caps, that achieve long term growth with as little risk as possible.
+
+Thus, the stability index estimation model aims to provide the most stable companies. According to statistical analysis on the given data, this indeed does hold.
 
 
 ## Modelling Approach Summary
 1. **Model Selection**
    - For the anomaly analysis, two models were chosen:
-     - Autoencoder Neural Network: It was selected for its proficiency in learning normal data patterns and identifying outliers based on reconstruction errors.
+      - Autoencoder Neural Network: It was selected for its proficiency in learning normal data patterns and identifying outliers based on reconstruction errors.
      - Isolation Forest (Iso Trees): Complementing the Autoencoder, the Isolation Forest was used for its effectiveness in anomaly isolation. 
      - Justification: Both models align with the project's objective of detecting anomalies without prior knowledge of their characteristics. The Autoencoder is justified for its feature learning capabilities, while the Isolation Forest offers a quick and effective method to pinpoint potential anomalies, even in the presence of noise. After analyzing both outputs, the Isolation Trees output was found more robust due to the training computation (for more details see notebook "models"). 
    - For the stability index, a statistical model was used that calculated the weighted sum of the standard deviation of:
@@ -86,20 +99,6 @@ Significant decreases in follower count: Suggest a loss of consumer or investor 
 Spikes in negative engagement metrics (likes, comments): These may imply public relations challenges or other negative events that could lead to decreased investor sentiment and subsequent stock price declines.
 The method reached an accuracy of 60%.
 By leveraging these insights, the "Sell" strategy is formulated to capitalize on early detection of negative trends, thus enabling timely decision-making that could protect investments from potential downturns. It's a proactive approach to mitigate risk based on the predictive signals from our anomaly detection models. 
-
-
-## Stability Index
-
-### Notebook
-
-- `stability_index.ipynb`: The notebook included in the directory using the discrepancy between short-term movements and long-term movements, in order to estimate the stability of each company within a single numerical value.
-- It also includes visualization of three representative companies, which show that the estimated stability correlates to the actual market and sentiment stability.
-**Long Term Investment Recommendations**
-
-As stock markets historically tend to go up, the sell signal already provides a great investment opportunity.
-In order to leverage this, we are looking for stable companies with big market caps, that achieve long term growth with as little risk as possible.
-
-Thus, the stability index estimation model aims to provide the most stable companies. According to statistical analysis on the given data, this indeed does hold.
 
 4. **Recommendations for Model Enhancement**
 
