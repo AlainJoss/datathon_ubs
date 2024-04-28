@@ -1,10 +1,9 @@
-# Preprocessing
+## Preprocessing
 
-In this folder we preprocess the data ingested by the EDA, the anomaly detection, and the stability_index.
+This folder contains preprocessing scripts for data used in Exploratory Data Analysis (EDA), anomaly detection, and stability index calculations. The preprocessing is performed sequentially through the following notebooks:
 
-In order, the preprocessing happens sequentially running the notebooks:
-1. exploration_and_cleansing
-2. feature_engineering
-3. financial_data_integration
+1. **exploration_and_cleansing** - Cleanses and explores data.
+2. **feature_engineering** - Develops features necessary for analysis.
+3. **financial_data_integration** - Integrates financial data sources.
 
-Each notebooks provides detailed information about the assumptions made and the motivation behind the chose processing steps.
+Each notebook details the assumptions and rationale for the chosen processing steps.
