@@ -11,6 +11,7 @@ This repository is structured into several directories corresponding to the majo
 - `preprocessing`: Scripts for data cleaning and integration.
 - `EDA`: Exploratory data analysis notebooks.
 - `anomaly_detection`: Notebooks focused on identifying anomalies.
+- `stability_index`: A notebook focused on identifying companies with little day-to-day fluctuation.
 
 ## Preprocessing
 The preprocessing phase is critical as it prepares the raw data for analysis. This stage includes cleaning the data, integrating financial data from Yahoo, and creating additional features needed for anomaly detection.
@@ -34,6 +35,12 @@ The anomaly detection component utilizes statistical and machine learning method
 ### Notebooks
 - Each notebook in this directory applies a different anomaly detection technique, allowing us to compare their effectiveness and suitability for various types of data scenarios.
 
+## Stability Index
+
+### Notebook
+- The notebook included in the directory using the discrepancy between short-term movements and long-term movements, in order to estimate the stability of each company within a single numerical value.
+- It also includes visualization of three representative companies, which show that the estimated stability correlates to the actual market and sentiment stability.
+
 ------
 ------
 # TODO:
@@ -49,9 +56,9 @@ ____
 ____
 
 ## Challenges and Solutions
-- The first challange encountered was to develope questions which we could answer given the data.
-- The second challange, directly related, was to clean the data, provided the huge amount of missing values, and the its complex structure.
-- The third challange was to develop an algorithm which could actually perform better than random guessing, given the little signal in the data.
+- The first challenge encountered was to develop questions which we could answer given the data.
+- The second challenge, directly related, was to clean the data, provided the huge amount of missing values, and its complex structure.
+- The third challenge was to develop an algorithm which could actually perform better than random guessing, given the little signal in the data.
 
 Overall, the biggest issue in providing value through our approach, is directly related to the quality of the data.
 The following enhancements would make our approach more effective:
@@ -60,19 +67,19 @@ The following enhancements would make our approach more effective:
 - no missing values 
 - a clear understanding of the insights that the dataset is aiming to provide
 
-______
-_______
-
-# TODO:
 
 ## Conclusion
-Summarize the key outcomes of the project, including the effectiveness of the proposed solutions and the potential impacts on investment strategies.
+This project offers a few key outcomes, which are directly applied to the given data, but can be customized to different datasets with very little effort.
+- Company stability estimates in order to evaluate long term investment goals
+- Short term negative public sentiment in order to generate Sell-Signals and skip market dips
+- Key insights into the effects of different dataset features on public market cap evaluation
 
 ## How to Use This Repository
 - Download packages listed in requirements.txt
 - Start with the preprocessing folder, running subsequently the three notebooks
 - Take a look at the EDA folder for gaining a deeper understanding about the nuances of the data
 - Take a deep dive into the Anomaly Detection folder to explore the use models and their performance
+- Use the stability index to evaluate long term investment goals. Edit hyperparameters according to your estimate
 
 ## Acknowledgments
 Thanks to all contributors, data providers, and supporters who made this project possible.
