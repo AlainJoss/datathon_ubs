@@ -1,7 +1,7 @@
+# Datathon - ETH Analytics Club - 26-28 April 2024 - UBS Challenge
 
-
-# Datathon - ETH Analytics Club - 26-28 April 2024 
-## UBS Challenge: Technical Report
+##  Technical Report
+This README includes a technical exposition of the content of the repository, explains how to navigate it, and uncovers our thaught process and the assumptions made throughout the analysis.
 
 ## Introduction
 Welcome to our project repository for the UBS Challenge. This project focuses on leveraging Instagram data to identify and capitalize on investment opportunities. This documentation provides a comprehensive overview of our analytical process, detailing our methodologies, the challenges we encountered, and the strategies we adopted to overcome these issues.
